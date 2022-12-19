@@ -6,5 +6,6 @@ class Human(Player):
     def choose_gesture(self):
         index=0
         for gesture in self.gestures:
-            print (f'Choose {index} for {gesture}')
+            self.choice=input(f'Choose {index} for {gesture}')
             index+=1
+            

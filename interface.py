@@ -7,3 +7,4 @@ def validate_to_int(str_input):
 
         except:
             print ("Sorry that was not an integer.")
+#Want to create a function that will let user know what each player chose and who winner was in round?
