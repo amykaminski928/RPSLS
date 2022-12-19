@@ -13,3 +13,10 @@ NOTE: Do not use a Gesture class until you have reached MVP for all user stories
 (10 points): As a player, I want the game of RPSLS to be at minimum a “best of three” to decide a winner.
 
 (10 points): As a player, I want the option of a single player (human vs AI) or a multiplayer (human vs human) game. """
+import random
+from human import Human
+human=Human()
+human.choose_gesture()
+from ai import AI
+ai=AI()
+ai.choose_gesture()
