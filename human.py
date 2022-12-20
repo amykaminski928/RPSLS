@@ -12,8 +12,9 @@ Choose 1 for {self.gestures[0]}
 Choose 2 for {self.gestures[1]}
 Choose 3 for {self.gestures[2]}
 Choose 4 for {self.gestures[3]}
-Choose 5 for {self.gestures[4]}""") 
+Choose 5 for {self.gestures[4]}
+""") 
         self.current_gesture=self.gestures[self.user_selection-1]
-        self.current_gesture=int
+        
 
             

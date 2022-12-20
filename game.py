@@ -10,16 +10,16 @@ class Game:
     def run(self):
         self.game_type()
         self.victory_message(self.winner_check())
-        
+        self.restart_message()
 
     def game_type(self):
         #the """ words """ characters allow you to create a list or other strings in a block as one string
         self.user_selection=ui.validate_to_int("""
-        Please select from the options below:
-        Press 1 for Human v. Human
-        Press 2 for Human v. AI
-        Press 3 for AI v. AI
-        """)
+Please select from the options below:
+Press 1 for Human v. Human
+Press 2 for Human v. AI
+Press 3 for AI v. AI
+""")
         if self.user_selection == 1:
             self.player_one= Human("Player 1")
             self.player_two= Human("Player 2")
@@ -74,3 +74,13 @@ class Game:
     def victory_message(self, obj):
         print(f"{obj} is the winner!")
         
+    def restart_message(self):
+        self.user_selection=ui.validate_to_int("""
+Would you like to play again?
+Choose 1 for Yes
+Choose 2 for No
+""")
+        if self.user_selection==1:
+            self.run()
+        else: 
+            print("\'A life is like a garden. Perfect moments can be had, but not preserved, except in memory. LLAP\' Leonard Nimoy, February 23, 2015, from Twitter")
