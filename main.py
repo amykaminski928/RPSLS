@@ -15,4 +15,4 @@ NOTE: Do not use a Gesture class until you have reached MVP for all user stories
 (10 points): As a player, I want the option of a single player (human vs AI) or a multiplayer (human vs human) game. """
 from game import Game
 game_one=Game()
-
+game_one.run()
