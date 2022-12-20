@@ -11,6 +11,7 @@ class Game:
         self.game_type()
         self.player_turn()
         
+
     def game_type(self):
         #the """ words """ characters allow you to create a list or other strings in a block as one string
         self.user_selection=ui.validate_to_int("""
@@ -35,32 +36,36 @@ class Game:
         self.player_two.choose_gesture()
         print(f"""{self.player_one} chose {self.player_one.choice}.
         {self.player_two} chose {self.player_two.choice}.""")
+        self.compare_gests()
         
     def winner_check(self):
-        #need to add rules/hierarchy of winning moves here as while loop?
+        while self.player_one.score<3 and self.player_two.score<3:
+            self.player_turn()
+        if self.player_one.score==3 and self.player_two.score<3:
+            print(f"{self.player_one} wins the game!")
+        if self.player_one.score<3 and self.player_two.score==3:
+            print(f"{self.player_two} wins the game!")
         pass
 
     def compare_gests(self):
         if self.player_one.choice==self.player_two.choice:
             print("Tie")
-        elif self.player_one.choice==self.player_one.choice[0] and (self.player_two.choice==self.player_two.choice[1] or [3]):
+        elif self.player_one.choice==self.player_one.choice[0]:
+            self.round_recap(1,3)
+        elif self.player_one.choice==self.player_one.choice[1]:
+            self.round_recap(2,3)
+        elif self.player_one.choice==self.player_one.choice[2]:
+            self.round_recap(0,4)
+        elif self.player_one.choice==self.player_one.choice[3]:
+            self.round_recap(2,4)
+        elif self.player_one.choice==self.player_one.choice[4]:
+            self.round_recap(0,1)
+
+    def round_recap(self, int_1, int_2):
+        if self.player_two.choice==self.player_two.choice[int_1] or self.player_two.choice==self.player_two.choice[int_2]):
             self.player_one.score+=1
-        elif self.player_one.choice==self.player_one.choice[1] and (self.player_two.choice==self.player_two.choice[2] or [3]):
-            self.player_one.score+=1
-        elif self.player_one.choice==self.player_one.choice[2] and (self.player_two.choice==self.player_two.choice[0] or [4]):
-            self.player_one.score+=1
-        elif self.player_one.choice==self.player_one.choice[3] and (self.player_two.choice==self.player_two.choice[2] or [4]):
-            self.player_one.score+=1
-        elif self.player_one.choice==self.player_one.choice[4] and (self.player_two.choice==self.player_two.choice[0] or [1]):
-            self.player_one.score+=1
-        elif self.player_one.choice==self.player_one.choice[0] and (self.player_two.choice==self.player_two.choice[2] or [4]):
-            self.player_two.score+=1
-        elif self.player_one.choice==self.player_one.choice[1] and (self.player_two.choice==self.player_two.choice[0] or [4]):
-            self.player_two.score+=1
-        elif self.player_one.choice==self.player_one.choice[2] and (self.player_two.choice==self.player_two.choice[1] or [3]):
-            self.player_two.score+=1
-        elif self.player_one.choice==self.player_one.choice[3] and (self.player_two.choice==self.player_two.choice[0] or [1]):
-            self.player_two.score+=1
-        elif self.player_one.choice==self.player_one.choice[4] and (self.player_two.choice==self.player_two.choice[2] or [3]):
-            self.player_two.score+=1
-          
+            print(f"{self.player_one.name} wins this round.")
+        self.player_two.score+=1
+        print(f"{self.player_two.name} wins this round.")
+        print(f"The score is now {self.player_one.name} with {self.player_one.score} to {self.player_two.name} with {self.player_two.score} points.")
+        self.winner_check()
